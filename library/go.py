@@ -14,10 +14,6 @@ options:
     description:
       - The executable location for go.
     required: false
-  gopath:
-    description:
-      - The environment variable GOPATH.
-    required: false
   command:
     description:
       - subcommand
@@ -43,11 +39,10 @@ EXAMPLES = '''
 go:
   name: github.com/github/hub
 
-# Specify GOPATH and the path of go command
+# Specify the path of go command
 go:
   name: github.com/github/hub
   executable: /usr/local/go/bin/go
-  gopath: /home/vagrant/.go
 
 # Not install
 go:
@@ -72,7 +67,6 @@ def main():
     module = AnsibleModule(argument_spec={
         "name": {"required": True, "type": "str"},
         "executable": {"required": False, "default": "go", "type": "str"},
-        "gopath": {"required": False, "type": "str"},
         "install": {"required": False, "default": True, "type": "bool"},
         "update": {"required": False, "default": False, "type": "bool"},
         "command": {
@@ -88,10 +82,6 @@ def main():
     install = params["install"]
     update = params["update"]
 
-    environ_update = {}
-    if "gopath" in params:
-        environ_update["GOPATH"] = params["gopath"]
-
     cmd = [go, command]
     if not install:
         cmd.append("-d")
@@ -99,7 +89,7 @@ def main():
         cmd.append("-u")
     cmd.append(package)
 
-    rc, out, err = module.run_command(cmd, environ_update=environ_update)
+    rc, out, err = module.run_command(cmd)
     if rc:
         module.fail_json(msg=err, stdout=out)
     else:

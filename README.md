@@ -40,7 +40,6 @@ parameter | required | default | choices | comments
 --- | --- | --- | --- | ---
 name | yes | | | The name of go package to install
 executable | no | | | The executable path of go command
-gopath | no | | | The environment variable GOPATH
 install | no | yes | bool | If no, the -d option is added to "go get" command
 update | no | no | bool | If yes, the -u option is added to "go get" command
 command | no | get | get | The subcommand of "go" command. Now support only "get"
@@ -52,11 +51,10 @@ command | no | get | get | The subcommand of "go" command. Now support only "get
 go:
   name: github.com/github/hub
 
-# Specify GOPATH and the path of go command
+# Specify the path of go command
 go:
   name: github.com/github/hub
   executable: /usr/local/go/bin/go
-  gopath: /home/vagrant/.go
 
 # Not install
 go:

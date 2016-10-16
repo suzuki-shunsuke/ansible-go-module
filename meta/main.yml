@@ -12,7 +12,6 @@ galaxy_info:
   - name: GenericLinux
     versions:
     - all
-    - any
   - name: ArchLinux
     versions:
     - all

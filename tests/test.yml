@@ -9,9 +9,11 @@
     go:
       name: github.com/github/hub
       executable: /usr/local/go/bin/go
-      gopath: "{{ ansible_env.HOME }}/.go"
+    environment:
+      GOPATH: "{{ansible_env.HOME}}/.go"
   - name: Check hub version
     command: "{{ ansible_env.HOME }}/.go/bin/hub version"
     register: result
     changed_when: false
-  - debug: var=result
+  - debug:
+      var: result
