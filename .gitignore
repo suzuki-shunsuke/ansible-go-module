@@ -1,4 +1,5 @@
 .vagrant
 *.retry
+*.pyc
 tests/_roles
 !tests/_roles/.gitkeep
