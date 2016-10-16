@@ -4,6 +4,8 @@
 
 Manage go packages with go command.
 
+https://galaxy.ansible.com/suzuki-shunsuke/go-module/
+
 ## Notice
 
 * This module supports only the "go get" command.
