@@ -12,9 +12,12 @@ addons:
     packages:
     - ansible
 
-before_script:
+before_install:
 - ansible --version
 - cd tests
+
+install:
+- ansible-galaxy install -r roles.yml
 
 script:
 - ansible-playbook test.yml
