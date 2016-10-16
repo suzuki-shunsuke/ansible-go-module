@@ -2,6 +2,7 @@
 - hosts: default
   roles:
   - role: suzuki-shunsuke.go
+  - role: ansible-go-module
   tasks:
   - name: Install hub
     go:

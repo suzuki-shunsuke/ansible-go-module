@@ -16,12 +16,20 @@ Manage go packages with go command.
 
 ## Install
 
-In the following example this module is installed in ~/ansible/modules directory.
+This module is distributed in the Ansible Galaxy.
+So you can install this with tha `ansible-galaxy` command.
 
 ```
-$ mkdir -p ~/ansible/modules
-$ export ANSIBLE_LIBRARY=~/ansible/modules
-$ git clone suzuki-shunsuke/ansible-go-module ~/ansible/modules/ansible-go-module
+$ ansible-galaxy install suzuki-shunsuke.go-module
+```
+
+```yaml
+# playbook.yml
+
+- hosts: default
+  roles:
+  # After you call this role, you can use this module.
+  - suzuki-shunsuke.go-module
 ```
 
 ## Options
@@ -62,3 +70,31 @@ go:
 ## Licence
 
 MIT
+
+## For developers
+
+### Requirements
+
+* Vagrant
+* Ansible
+
+### Setup test
+
+```
+$ cd tests
+$ ansible-galaxy install -r roles.yml
+```
+
+### Test in Vagrant Provisioning
+
+```
+$ cd tests
+$ vagrant up --provision-with=ansible
+$ vagrant up --provision-with=ansible_local
+```
+
+### Test in localhost
+
+```
+$ ansible-playbook test.yml
+```
