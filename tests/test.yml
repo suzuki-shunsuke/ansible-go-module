@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: default
   roles:
   - role: suzuki-shunsuke.go
   - role: ansible-go-module
@@ -9,10 +8,11 @@
     go:
       name: github.com/github/hub
       executable: /usr/local/go/bin/go
+      update: yes
     environment:
       GOPATH: "{{ansible_env.HOME}}/.go"
   - name: Check hub version
-    command: "{{ ansible_env.HOME }}/.go/bin/hub version"
+    command: "{{ansible_env.HOME}}/.go/bin/hub version"
     register: result
     changed_when: false
   - debug:
