@@ -19,7 +19,7 @@ https://galaxy.ansible.com/suzuki-shunsuke/go-module/
 ## Install
 
 This module is distributed in the Ansible Galaxy.
-So you can install this with tha `ansible-galaxy` command.
+So you can install this with `ansible-galaxy` command.
 
 ```
 $ ansible-galaxy install suzuki-shunsuke.go-module
